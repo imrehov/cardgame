@@ -14,4 +14,7 @@ class CardGame{
 
     uint8_t inputChar;
 
+    void correct(const Card& first, const Card& second, bool higher=1) const;
+    void unlucky(const Card& first, const Card& second, bool higher=1) const;
+
 };

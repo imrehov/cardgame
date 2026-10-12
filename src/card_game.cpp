@@ -15,19 +15,19 @@ void CardGame::play() {
 			case '+':
 			if (deck[static_cast<int>(i)] >= deck[static_cast<int>(i - 1)]){
 				++points;
-				std::cout << "Correct, " << deck[static_cast<int>(i)] << "is greater than or equal to " << deck[static_cast<int>(i - 1)] << '\n';
+				correct(deck[static_cast<int>(i)], deck[static_cast<int>(i - 1)]);
 			}
 			else {
-				std::cout << "Unlucky, " << deck[static_cast<int>(i)] << "is smaller than or equal to " << deck[static_cast<int>(i - 1)] << '\n';
+				unlucky(deck[static_cast<int>(i)], deck[static_cast<int>(i - 1)]);
 			}
 			break;
 			case '-':
 			if (deck[static_cast<int>(i)] <= deck[static_cast<int>(i - 1)]){
 				++points;
-				std::cout << "Correct, " << deck[static_cast<int>(i)] << "is smaller than or equal to " << deck[static_cast<int>(i - 1)] << '\n';
+				correct(deck[static_cast<int>(i)], deck[static_cast<int>(i - 1)], false);
 			}
 			else {
-				std::cout << "Unlucky, " << deck[static_cast<int>(i)] << "is greater than or equal to " << deck[static_cast<int>(i - 1)] << '\n';
+				unlucky(deck[static_cast<int>(i)], deck[static_cast<int>(i - 1)], false);
 			}
 			break;
 			default:
@@ -36,4 +36,23 @@ void CardGame::play() {
 	}
 
 	std::cout << "You earned " << points << " points!" << std::endl;
+}
+
+void CardGame::correct(const Card& first, const Card& second, bool higher) const{
+	if (higher) {
+		std::cout << "Correct, " << first << " is greater than or equal to " << second << '\n';
+	}
+	else {
+		std::cout << "Correct, " << first << " is smaller than or equal to " << second << '\n';
+	}
+
+}
+
+void CardGame::unlucky(const Card &first, const Card &second, bool higher) const{
+	if (higher) {
+		std::cout << "Unlucky, " << first << " is smaller than or equal to " << second << '\n';
+	}
+	else {
+		std::cout << "Unlucky, " << first << " is greater than or equal to " << second << '\n';
+	}
 }
