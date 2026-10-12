@@ -1,10 +1,9 @@
-#include "include/deck.h"
+#include "include/card_game.h"
 
-#include <iostream>
 
 int main()
 {
-	Deck deck;
+	CardGame cg;
 
-	std::cout << "The first card in the deck is: " << deck[0] << std::endl;
+	cg.play();
 }
